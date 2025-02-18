@@ -31,7 +31,7 @@ Esse projeto foi construido com postgresql portanto configure no arquivo config/
 ```
 ## Usuarios default
 
-O sistema permite a criacao de outros usuarios mas ele precisa comecar com um banco povoado por pelo menos um admin rodando a seed vc tem acesso as 3 usuarios, um para cada role do sistema 
+O sistema permite a criacao de outros usuarios mas ele precisa comecar com um banco povoado por pelo menos um admin. Rodando a seed voce tem acesso a 3 usuarios, um para cada role do sistema.
 
 ```bash
 #Usuario Admin
