@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Setor</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Novo Setor para <%= @unidade.name %></h2>
+      <%= form_with(model: @setor, url: unidade_setor_index_path(@unidade), local: true, class: "formulario") do |f| %>
+        <!-- Campo Nome do Setor -->
+        <div class="form-group">
+          <%= f.label :name, "Nome do Setor", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <!-- Ações do Formulário -->
+        <div class="form-actions">
+          <%= f.submit "Adicionar Setor", class: "btn btn-primary" %>
+          <%= link_to "Voltar", unidade_setor_index_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!-- app/views/visita/show.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detalhes do Visitante</title>
+  </head>
+  <body>
+    <div class="show-container">
+      <h1>Detalhes da Visita</h1>
+      <% if @visita %>
+        <p><strong>Visitante:</strong> <%= @visitante.name %></p>
+        <p><strong>Setor:</strong> <%= @setor.name %></p>
+        <p><strong>Data da Visita:</strong> <%= @visita.date %></p>
+        <p><strong>Funcionario:</strong>
+          <%= if(@funcionario)
+            @funcionario.name
+            else 
+              "sem funcionario atribuido"
+            end
+          %>
+        </p>
+      <% else %>
+        <p>Visita não encontrada.</p>
+      <% end %>
+      <div class="show-actions">
+        <%= button_to "Voltar", request.referer || root_path, method: :get, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </body>
+</html>

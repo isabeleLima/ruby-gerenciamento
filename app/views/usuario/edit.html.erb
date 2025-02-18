@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Usuario</title>
+  </head>
+  <body>
+    <%= form_for(@usuario, html: { class: "form-container" }) do |f| %>
+      <h2>Edit Usuario</h2>
+      <div class="form-group">
+        <%= f.label :name, class: "form-label" %><br />
+        <%= f.text_field :name, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, class: "form-label" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :role, class: "form-label" %><br />
+        <%= f.select :role, options_for_select([['Funcionario', 1], ['Atendente', 2], ['Admin', 3]]), { include_blank: false }, class: "form-input" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Voltar",  usuarios_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </body>
+</html>

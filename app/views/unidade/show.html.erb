@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detalhes do Visitante</title>
+  </head>
+  <body>
+    <div class="show-container">
+      <h2>Unidade</h2>
+      <p><strong>ID:</strong> <%= @unidade.id %></p>
+      <p><strong>nome:</strong> <%= @unidade.name %></p>
+      <% if  @atendente %>
+        <p><strong>atendente:</strong> <%= @atendente.name %></p>
+      <% else %>
+        <p>Nenhum atendente cadastrado a essa unidade.</p>
+        <%= button_to "Adicionar atendente",unidade_new_atendente_path(@unidade), method: :get, class: "btn btn-new" %>
+      <% end %>
+      <div class="show-actions">
+        <%= button_to "Voltar", unidades_path, method: :get, class: "btn btn-secondary" %>
+      </div>
+    </body>
+  </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Erro-Nao Autorizado</title>
+  </head>
+  <body class="dashboard">
+    <h1>Voce nao tem acesso a essa pagina </h1>
+    <img src="https://img.freepik.com/free-vector/page-found-concept-illustration_114360-1869.jpg" alt="Erro 404 - Página Não Encontrada" style="width: 400px; height: auto;"/>
+    <div class="options">
+      <% if(current_usuario.role == 1) %>
+        <td><%= link_to "Voltar ao dashboard", dashboard_funcionario_path %></td>
+      <% elsif(current_usuario.role == 2) %>
+        <td><%= link_to "Voltar ao dashboard", dashboard_atendente_path %></td>
+      <% else(current_usuario.role == 3) %>
+        <td><%= link_to "Voltar ao dashboard", dashboard_admin_path %></td>
+      <% end %>
+    </div>
+  </body>
+</html>

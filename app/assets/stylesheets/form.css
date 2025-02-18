@@ -1,0 +1,147 @@
+/* Contêiner principal do formulário */
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: auto; /* Centraliza o formulário na tela */
+  }
+  
+  /* Estilo do título */
+  .form-container h1,h2 {
+    text-align: center;
+    color: #003366;
+  }
+
+  
+  /* Agrupamento dos campos do formulário */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Rótulos */
+  .form-label {
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 5px;
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    appearance: none; /* Remove estilos padrão do navegador */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Adicionando borda ao foco */
+  .form-control:focus {
+    border-color: #003366;
+    outline: none;
+  }
+  
+  /* Campos de entrada */
+  .form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .form-input:focus {
+    border-color: #0066cc;
+    outline: none;
+  }
+  
+  /* Botões */
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Botão principal (Salvar) */
+  .btn-primary {
+    background-color: #0066cc;
+    color: white;
+    border: 1px solid #0066cc;
+  }
+  
+  .btn-primary:hover {
+    background-color: #005bb5;
+  }
+  
+  /* Botão secundário (Voltar) */
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: 1px solid #6c757d;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Grupo de ações do formulário */
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .form-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-table th,
+  .form-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .form-table th {
+    background-color: #0066cc; /* Azul para cabeçalho */
+    color: white;
+  }
+  
+  .form-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .form-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  

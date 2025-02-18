@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nova Visita</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Registrar Nova Visita</h2>
+      <!-- Campo CPF fora do formulário para evitar o envio -->
+      <div class="form-group">
+        <%= label :cpf_visitante, "Buscar Visitante pelo CPF", class: "form-label" %>
+        <%= text_field_tag :cpf_visitante, "", placeholder: "Digite o CPF", class: "form-control", id: "cpf_visitante" %>
+        <span id="visitante_info" style="display: block; margin-top: 5px; font-weight: bold;"></span>
+      </div>
+      <%= form_with model: @visita, local: true, class: "formulario" do |form| %>
+        <!-- Campo oculto para o visitante_id que será enviado -->
+        <%= form.hidden_field :visitante_id, id: "visitante_id" %>
+        <div class="form-group">
+          <%= form.label :date, "Data e Hora da Visita", class: "form-label" %>
+          <%= form.datetime_local_field :date, value: Time.current.strftime("%Y-%m-%dT%H:%M"), class: "form-control" %>
+        </div>
+        <% if @setores.present? %>
+          <%= form.label :setor_id, "Setor", class: "form-label" %>
+          <%= form.collection_select :setor_id, @setores, :id, :name, { prompt: "Selecione um setor" }, { id: "setor-select", class: "form-select" } %>
+        <% else %>
+          <p>Nenhum setor disponível.</p>
+        <% end %>
+        <div class="form-group">
+          <%= form.label :usuario_id, "Funcionário", class: "form-label" %>
+          <%= form.select :usuario_id, [], { prompt: "Selecione um funcionário ou escolha 'Nenhum'" }, { id: "funcionario-select", class: "form-select" } %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Registrar Visita", id: "submit_button", class: "btn btn-primary", disabled: true %>
+          <%= button_to "Voltar", request.referer || root_path, method: :get, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+   const cpfInput = document.getElementById("cpf_visitante");
+   const visitanteInfo = document.getElementById("visitante_info");
+   const visitanteIdInput = document.getElementById("visitante_id");
+   const submitButton = document.getElementById("submit_button");
+
+   cpfInput.addEventListener("input", function() {
+     let cpf = this.value.trim();
+     if (cpf.length === 11) { // Verifica se o CPF tem 11 dígitos
+       fetch(`/visitantes/busca_por_cpf?cpf=${cpf}`)
+         .then(response => response.json())
+         .then(data => {
+           if (data.id) {
+             visitanteIdInput.value = data.id;  // Preenche o campo oculto
+             visitanteInfo.textContent = "Visitante: " + data.name;
+             visitanteInfo.style.color = "green";
+             submitButton.disabled = false;
+           } else {
+             visitanteIdInput.value = "";
+             visitanteInfo.textContent = "Visitante não encontrado.";
+             visitanteInfo.style.color = "red";
+             submitButton.disabled = true;
+           }
+         })
+         .catch(error => console.error("Erro na busca do visitante:", error));
+     } else {
+       visitanteInfo.textContent = "Digite um CPF válido (11 dígitos).";
+       visitanteInfo.style.color = "gray";
+       visitanteIdInput.value = "";
+       submitButton.disabled = true;
+     }
+   });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof $ === "undefined") {
+      console.error("jQuery não está carregado!");
+      return;
+    }
+
+    $("#setor-select").change(function() {
+      let setorId = $(this).val();
+
+      if (setorId === "") {
+        $("#funcionario-select").html('<option value="">Selecione um funcionário</option>');
+        return;
+      }
+
+      $.ajax({
+        url: `/setores/${setorId}/funcionarios`,
+        type: "GET",
+        dataType: "json",
+        success: function(funcionarios) {
+          let options = '<option value="0">Nenhum</option>';
+          $.each(funcionarios, function(index, func) {
+            options += `<option value="${func.id}">${func.name}</option>`;
+          });
+
+          $("#funcionario-select").html(options);
+        },
+        error: function() {
+          alert("Erro ao carregar funcionários.");
+        }
+      });
+    });
+  });
+</script>

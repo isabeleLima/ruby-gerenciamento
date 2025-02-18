@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Visitas</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <%= form_with model: @visita, local: true do |form| %>
+        <h2>Editar Visita</h2>
+        <!-- Campo oculto para armazenar o visitante_id -->
+        <%= form.hidden_field :visitante_id, id: "visitante_id", value: @visita.visitante_id %>
+        <div class="form-group">
+          <%= form.label :date, "Data e Hora da Visita", class: "form-label" %>
+          <%= form.datetime_local_field :date, value: @visita.date.strftime("%Y-%m-%dT%H:%M"), class: "form-control" %>
+        </div>
+        <!-- Status -->
+        <div class="form-group">
+          <%= form.label :status, "Status da Visita", class: "form-label" %>
+          <%= form.select :status, [['Em Espera', 1], ['Finalizado', 2], ['Cancelado', 3]], { prompt: "Selecione o status" }, { class: "form-control" } %>
+        </div>
+        <div class="form-actions">
+          <%= form.submit "Atualizar Visita", id: "submit_button",class: "btn btn-primary" %>
+          <%= link_to "Voltar", unidades_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

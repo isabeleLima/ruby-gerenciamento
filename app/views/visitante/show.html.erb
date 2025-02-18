@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detalhes do Visitante</title>
+  </head>
+  <body>
+    <div class="show-container">
+      <h2>Detalhes do Visitante</h2>
+      <p><strong>ID:</strong> <%= @visitante.id %></p>
+      <p><strong>Nome:</strong> <%= @visitante.name %></p>
+      <p><strong>CPF:</strong> <%= @visitante.cpf %></p>
+      <p><strong>Telefone:</strong> <%= @visitante.telephone %></p>
+      <% if @visitante.picture.present? %>
+        <div class="visitante-foto">
+          <img src="<%= @visitante.picture.url %>" alt="Foto do Visitante" />
+        </div>
+      <% else %>
+        <p>Nenhuma foto disponível.</p>
+      <% end %>
+      <div class="show-actions">
+        <%= button_to "Voltar", visitantes_path, method: :get, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </body>
+</html>

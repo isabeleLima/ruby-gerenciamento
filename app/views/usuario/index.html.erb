@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unidades</title>
+  </head>
+  <body class="dashboard">
+    <h1>Usuários</h1>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Título</th>
+          <th>Role</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @usuario.each do |usuario| %>
+          <tr>
+            <td><%= usuario.id %></td>
+            <td><%= usuario.name %></td>
+            <td><%= usuario.role %></td>
+            <td>
+              <div class="action-buttons">
+                <%= button_to "Excluir", usuario_path(usuario), method: :delete, class: "btn btn-delete" %>
+                <%= button_to "Editar", edit_usuario_path(usuario), method: :get, class: "btn btn-edit" %>
+                <%= button_to "Ver detalhes", usuario_path(usuario), method: :get, class: "btn btn-new" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= button_to "Novo Usuário", new_usuario_path, method: :get, class: "btn btn-new" %>
+      <%= button_to "Voltar", dashboard_admin_path, method: :get, class: "btn btn-secondary" %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+/* Estilos aplicados a qualquer página com a classe 'dashboard' */
+.dashboard {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Fundo azul claro */
+    color: #003366; /* Texto azul escuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .dashboard h1 {
+    color: #003366; /* Azul escuro para o título */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para a tabela */
+  .usuarios-table {
+    width: 80%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .usuarios-table th,
+  .usuarios-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  .usuarios-table th {
+    background-color: #0066cc; /* Azul para cabeçalho */
+    color: white;
+  }
+  
+  .usuarios-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .usuarios-table tr:hover {
+    background-color: #ddd;
+  }
+
+
+  
+  
+  /* Estilos para os botões */
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Botão Novo Usuário */
+  .btn-new {
+    background-color: #28a745; /* Verde para o botão novo */
+    color: white;
+    border: 1px solid #28a745;
+  }
+  
+  .btn-new:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  /* Botão Editar */
+  .btn-edit {
+    background-color: #ffc107; /* Amarelo para o botão editar */
+    color: white;
+    border: 1px solid #ffc107;
+  }
+  
+  .btn-edit:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+  
+  /* Botão Excluir */
+  .btn-delete {
+    background-color: #e60000; /* Vermelho para o botão excluir */
+    color: white;
+    border: 1px solid #e60000;
+  }
+  
+  .btn-delete:hover {
+    background-color: #b30000;
+    border-color: #b30000;
+  }
+  
+  /* Botão Voltar */
+  .btn-secondary {
+    background-color: #6c757d; /* Cinza para o botão voltar */
+    color: white;
+    border: 1px solid #6c757d;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  /* Alinhar os botões na parte inferior */
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  /* Estilos para os links - iguais aos do Dashboard */
+  .usuarios-table a, 
+  .actions a {
+    text-decoration: none;
+    color: #0066cc; /* Azul vibrante para os links */
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #0066cc; /* Borda azul para os links */
+  }
+  
+  .usuarios-table a:hover, 
+  .actions a:hover {
+    background-color: #0066cc; /* Azul vibrante no hover */
+    color: white; /* Cor do texto no hover */
+    border-color: #0066cc;
+  }
+  

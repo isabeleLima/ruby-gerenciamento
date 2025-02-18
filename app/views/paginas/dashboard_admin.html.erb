@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administração</title>
+  </head>
+
+  <body class="dashboard">
+    <h1>ADMIN</h1>
+    <div class="options">
+      <%= link_to "Listar Usuarios", usuarios_path %>
+      <%= link_to "Listar Unidades", unidades_path %>
+      <%= link_to "Listar Visitantes", visitantes_path %>
+      <%= button_to "Sair", destroy_usuario_session_path, method: :delete, class: 'logout-button' %>
+    </div>
+  </body>
+</html>

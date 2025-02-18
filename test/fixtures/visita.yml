@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitante: one
+  setor: one
+  date: 2025-02-14 01:06:55
+  status: 1
+
+two:
+  visitante: two
+  setor: two
+  date: 2025-02-14 01:06:55
+  status: 1

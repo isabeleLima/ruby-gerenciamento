@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body class="dashboard">
+    <h1>ATENDENTE</h1>
+    <div class="options">
+      <td><%= link_to "Listar Visitantes", visitantes_path %></td>
+      <td><%= link_to "Ver Visitas", visita_path %></td>
+      <td><%= button_to "Sair", destroy_usuario_session_path, method: :delete %></td>
+    </div>
+  </body>
+</html>

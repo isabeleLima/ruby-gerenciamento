@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detalhes do Visitante</title>
+  </head>
+  <body>
+    <div class="show-container">
+      <h2>Detalhes</h2>
+      <p><strong>ID:</strong> <%= @usuario.id %></p>
+      <p><strong>Nome:</strong> <%= @usuario.name %></p>
+      <p><strong>Role:</strong> <%= @usuario.role %></p>
+      <div class="show-actions">
+        <%= button_to "Voltar", usuarios_path, method: :get, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+/* Estilos aplicados a qualquer página com a classe 'dashboard' */
+.dashboard {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Fundo azul claro */
+    color: #003366; /* Texto azul escuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .dashboard h1 {
+    color: #003366; /* Azul escuro para o título */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Botões dentro da tabela (Editar/Excluir) */
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+  
+  .dashboard .options {
+    display: flex; /* Flexbox para alinhar as opções horizontalmente */
+    justify-content: center; /* Centralizar as opções no eixo horizontal */
+    align-items: center; /* Alinhar as opções verticalmente */
+    gap: 20px; /* Espaçamento entre as opções */
+  }
+  
+  .dashboard .options a, 
+  .dashboard .options button {
+    text-decoration: none;
+    color: #0066cc; /* Azul vibrante para os links */
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #0066cc;
+    display: inline-block;
+  }
+  
+  .dashboard .options a:hover, 
+  .dashboard .options button:hover {
+    background-color: #0066cc; /* Azul vibrante no hover */
+    color: white; /* Cor do texto no hover */
+  }
+  
+  /* Estilo específico para o botão "Sair" */
+  .logout-button {
+    background-color: #e60000; /* Fundo vermelho para o botão "Sair" */
+    color: white; /* Cor do texto branca */
+    border-color: #e60000; /* Cor da borda vermelha */
+  }
+  
+  .logout-button:hover {
+    background-color: #b30000; /* Fundo vermelho mais escuro no hover */
+    border-color: #b30000; /* Borda vermelha mais escura */
+  }
+  

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body class="dashboard">
+    <h1>FUNCIONARIO</h1>
+     <div class="options">
+      <td><%= link_to "Ver Visitas", funcionario_visita_path %></td>
+      <td><%= button_to "Sair", destroy_usuario_session_path, method: :delete %></td>
+    </div>
+  </body>
+</html>

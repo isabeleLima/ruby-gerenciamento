@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Usuários</title>
+  </head>
+  <body class="dashboard">
+    <h1>Unidade</h1>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>id#</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @unidade.each do |unidade| %>
+          <tr>
+            <td><%= unidade.id %></td>
+            <td><%= unidade.name %></td>
+            <td>
+              <div class="action-buttons">
+                <%= button_to "Editar", edit_unidade_path(unidade), method: :get, class: "btn btn-edit" %>
+                <%= button_to "Excluir", unidade_path(unidade), method: :delete, class: "btn btn-delete" %>
+                <%= button_to "Ver Detalhes", unidade_path(unidade), method: :get, class: "btn btn-new" %>
+                <%= button_to "Ver Setores", unidade_setor_index_path(unidade), method: :get, class: "btn btn-new" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= button_to "Adicionar Unidade", new_unidade_path , method: :get, class: "btn btn-new"%>
+      <%= button_to "Voltar", dashboard_admin_path, method: :get, class: "btn btn-secondary" %>
+    </div>
+  </body>
+</html>

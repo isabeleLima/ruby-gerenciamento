@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visitantes</title>
+  </head>
+  <body class="dashboard">
+    <h1>Visitantes</h1>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Título</th>
+          <th>CPF</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visitante.each do |visitante| %>
+          <tr>
+            <td><%= visitante.id %></td>
+            <td><%= visitante.name %></td>
+            <td><%= visitante.cpf %>
+              <td>
+                <div class="action-buttons">
+                  <%= button_to "Editar", edit_visitante_path(visitante),method: :get, class: "btn btn-edit" %>
+                  <%= button_to "Ver Detalhes", visitante_path(visitante),method: :get, class: "btn btn-new" %>
+                  <%= button_to "Excluir", visitante_path(visitante), method: :delete, class: "btn btn-delete" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="actions">
+        <%= button_to "Novo Visitante", new_visitante_path, method: :get, class: "btn btn-new" %>
+        <% if current_usuario.role == 3 %>
+          <%= button_to "Voltar", dashboard_admin_path, method: :get, class: "btn btn-secondary" %>
+        <% elsif current_usuario.role == 2 %>
+          <%= button_to "Voltar", dashboard_atendente_path, method: :get, class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+    </body>
+  </html>

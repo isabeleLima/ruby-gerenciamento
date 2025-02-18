@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Unidade</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Editar Unidade</h2>
+      <%= form_for(@unidade, html: { class: "formulario" }) do |f| %>
+        <!-- Campo de Nome da Unidade -->
+        <div class="form-group">
+          <%= f.label :name, "Nome da Unidade", class: "form-label" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <!-- Ações do formulário -->
+        <div class="form-actions">
+          <%= f.submit "Salvar", class: "btn btn-primary" %>
+          <%= link_to "Voltar", unidades_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

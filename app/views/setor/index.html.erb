@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unidades</title>
+  </head>
+  <body class="dashboard">
+    <h1>Setores da unidade</h1>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @setor.each do |setor| %>
+          <tr>
+            <td><%= setor.id %></td>
+            <td><%= setor.name %></td>
+            <td>
+              <div class="action-buttons">
+                <%= button_to "Editar", edit_unidade_setor_path(@unidade.id, setor), method: :get, class: "btn btn-edit" %>
+                <%= button_to "Excluir", unidade_setor_path(@unidade, setor), method: :delete, class: "btn btn-delete" %>
+                <%= button_to "Ver Funcionários", funcionarios_unidade_setor_path(@unidade, setor),method: :get, class: "btn btn-new" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= button_to "Novo Setor", new_unidade_setor_path, method: :get, class: "btn btn-new" %>
+      <%= button_to "Voltar", unidades_path, method: :get, class: "btn btn-secondary" %>
+    </div>
+  </body>
+</html>

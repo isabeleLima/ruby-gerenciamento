@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Setor</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Adicionar Funcionário ao Setor</h2>
+      <%= form_with url: add_funcionario_unidade_setor_path(@unidade, @setor), method: :post, class: "formulario" do |f| %>
+        <div class="form-group">
+          <%= f.label :funcionario_id, "Selecionar Funcionário", class: "form-label" %>
+          <%= f.collection_select :funcionario_id, Usuario.where(role: 1), :id, :name, {}, { class: "form-select" } %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Salvar", class: "btn btn-primary" %>
+          <%= button_to "Voltar", unidade_setor_index_path, method: :get, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html> 

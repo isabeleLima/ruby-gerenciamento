@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unidades</title>
+  </head>
+  <body class="dashboard">
+    <h2>Visitas Pendentes</h2>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Visitante</th>
+          <th>Funcionário Responsável</th>
+          <th>Data da Visita</th>
+          <th>Status</th>
+          <th>Acoes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visitas_pendentes.each do |visita| %>
+          <tr>
+            <td><%= visita.id %></td>
+            <td><%= visita.visitante.name %></td>
+            <td>
+              <%= if(visita.usuario)
+            visita.usuario.name
+            else 
+              "sem funcionario atribuido"
+            end
+          %>
+            </td>
+            <td><%= visita.date.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%= if visita.status == 1
+            "EM ESPERA"
+            elsif visita.status == 2
+              "FINALIZADA"
+            else 
+               "CANCELADA"
+            end
+          %></td>
+            <td>
+              <div class="action-buttons">
+                <%= button_to "Ver Detalhes", visitum_path(visita),method: :get, class: "btn btn-new" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h2>Visitas Atrasadas</h2>
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>Visitante</th>
+          <th>Funcionário Responsável</th>
+          <th>Data da Visita</th>
+          <th>Status</th>
+          <th>Acoes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visitas_atrasadas.each do |visita| %>
+          <tr style="color: red;">
+            <td><%= visita.visitante.name %></td>
+            <td>
+              <%= if(visita.usuario)
+            visita.usuario.name
+            else 
+              "sem funcionario atribuido"
+            end
+          %>
+            </td>
+            <td><%= visita.date.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%= if visita.status == 1
+            "EM ESPERA"
+            elsif visita.status == 2
+              "FINALIZADA"
+            else 
+               "CANCELADA"
+            end
+          %></td>
+            <td>
+              <div class="action-buttons">
+                <%= button_to "Ver Detalhes", visitum_path(visita),method: :get, class: "btn btn-new" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= button_to "Nova visita", new_visitum_path, method: :get, class: "btn btn-new" %>
+      <%= button_to "Voltar", request.referer || root_path, method: :get, class: "btn btn-secondary" %>
+    </div>
+  </body>
+</html>

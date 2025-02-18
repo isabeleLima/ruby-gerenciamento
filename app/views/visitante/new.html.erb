@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Usuario</title>
+  </head>
+  <body>
+    <%= form_for(@visitante,html: { class: "form-container" }) do |f| %>
+      <h1>Novo visitante</h1>
+      <div  class="form-group">
+        <%= f.label :name, class: "form-label" %><br />
+        <%= f.text_field :name, class: "form-input"  %>
+      </div>
+      <div  class="form-group">
+        <%= f.label :cpf, class: "form-label" %><br />
+        <%= f.text_field :cpf, class: "form-input" %>
+      </div>
+      <div  class="form-group">
+        <%= f.label :telephone, class: "form-label" %><br />
+        <%= f.text_field :telephone, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <input type="file" id="foto_input" accept="image/*" capture="camera" style="display: none;">
+        <%= f.hidden_field :picture, id: "foto_data" %>
+        <video id="video" width="320" height="240" autoplay></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <div class="form-actions"> <button type="button" id="capture" class="btn btn-secondar">Capturar Foto</button></div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Voltar", visitantes_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </body>
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const captureButton = document.getElementById("capture");
+    const fotoInput = document.getElementById("foto_data");
+
+    if (video && captureButton) {
+      // Primeiro, pegamos a lista de dispositivos de mídia (câmeras e microfones)
+      navigator.mediaDevices.enumerateDevices().then((devices) => {
+        let droidCamDeviceId = null;
+
+        // Filtra apenas dispositivos do tipo 'videoinput' (câmeras)
+        const videoDevices = devices.filter((device) => device.kind === "videoinput");
+
+        console.log("Câmeras detectadas:", videoDevices);
+
+        // Procura um dispositivo que contenha "DroidCam" no nome
+        videoDevices.forEach((device) => {
+          if (device.label.toLowerCase().includes("droidcam")) {
+
+            droidCamDeviceId = device.deviceId;
+            console.log("cameraaaaaa",droidCamDeviceId)
+          }
+        });
+
+        // Se encontrou o DroidCam, usa ele. Senão, usa a primeira câmera disponível
+        const constraints = {
+          video: {
+            deviceId: droidCamDeviceId ? { exact: droidCamDeviceId } : undefined,
+            width: 640,
+            height: 480
+          }
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (err) {
+            console.error("Erro ao acessar a câmera:", err);
+          });
+      });
+
+      captureButton.addEventListener("click", function () {
+        console.log("botaum")
+        const context = canvas.getContext("2d");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Converte a imagem para base64 e armazena no campo oculto
+        const imageData = canvas.toDataURL("image/png");
+        fotoInput.value = imageData;
+        console.log(fotoInput)
+      });
+    }
+  });
+</script>

@@ -1,0 +1,79 @@
+/* Aplicar somente à página de login */
+#login-page {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff;
+    color: #003366;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  #login-page .container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  #login-page h2 {
+    text-align: center;
+    color: #003366;
+  }
+  
+  #login-page .field {
+    margin-bottom: 20px;
+  }
+  
+  #login-page .field label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #0066cc;
+  }
+  
+  #login-page .field input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  #login-page .field input:focus {
+    border-color: #0066cc;
+    outline: none;
+  }
+  
+  #login-page .actions {
+    text-align: center;
+  }
+  
+  #login-page .actions input[type="submit"] {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  #login-page .actions input[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+  
+  #login-page .field input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  #login-page .field input[type="checkbox"] + label {
+    font-size: 14px;
+    color: #0066cc;
+  }
+  

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar Usuario</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Adicionar Atendente à Unidade</h2>
+      <%= form_with url: unidade_add_atendente_path(@unidade), method: :patch, class: "formulario" do |f| %>
+        <div class="form-group">
+          <%= f.label :atendente_id, "Selecionar Funcionário", class: "form-label" %>
+          <%= f.collection_select :atendente_id, Usuario.where(role: 2), :id, :name, {}, class: "form-select" %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Adicionar Atendente", class: "btn btn-primary" %>
+          <%= link_to "Voltar",  unidade_path(@unidade), class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>

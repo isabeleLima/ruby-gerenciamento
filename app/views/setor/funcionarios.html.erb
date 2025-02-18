@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Funcionários do Setor</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Funcionários do Setor: <%= @setor.name %></h1>
+      <h2>Unidade: <%= @unidade.name %></h2>
+      <% funcionarios_funcionarios = @funcionarios.select { |f| f.role == 1 } %>
+      <% if funcionarios_funcionarios.any? %>
+        <table class="form-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% funcionarios_funcionarios.each do |funcionario| %>
+              <tr>
+                <td><%= funcionario.name %></td>
+                <td><%= funcionario.email %></td>
+                <td>
+                  <div class="action-buttons">
+                    <%= button_to "Ver Perfil", usuario_path(funcionario), method: :get, class: "btn btn-new" %>
+                    <%= button_to "Remover de setor", remove_funcionario_unidade_setor_path(@unidade, @setor, usuario_id: funcionario.id), method: :delete, class: "btn btn-delete" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>Nenhum funcionário encontrado.</p>
+      <% end %>
+      <div class="actions">
+        <%= button_to "Adicionar Funcionário", new_funcionario_unidade_setor_path(@unidade, @setor), method: :get, class: "btn btn-new" %>
+        <%= button_to "Voltar", unidade_setor_index_path, method: :get, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </body>
+</html>
