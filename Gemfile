@@ -41,7 +41,7 @@ gem 'devise'
 
 gem 'cancancan'
 
-gem 'carrierwave', '~> 2.2'
+gem 'carrierwave', '~> 3.1'
 
 gem 'htmlbeautifier'
 
