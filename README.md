@@ -27,3 +27,26 @@ Esse projeto foi construido com postgresql portanto configure no arquivo config/
 
 #roadando servidor no localhost:3000
   bin/rails server
+
+```
+## Usuarios default
+
+O sistema permite a criacao de outros usuarios mas ele precisa comecar com um banco povoado por pelo menos um admin rodando a seed vc tem acesso as 3 usuarios, um para cada role do sistema 
+
+```bash
+#Usuario Admin
+  email: 'admin@exemplo.com',
+  password: '123123', 
+  role: 3,
+
+#Usuario Atendente
+  email: 'atendente@exemplo.com',
+  password: '123123', 
+  role: 2,
+
+#Usuario Funcionario
+  email: 'funcionario@exemplo.com',
+  password: '123123', 
+  role: 1,
+
+```
